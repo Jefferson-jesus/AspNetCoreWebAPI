@@ -29,8 +29,9 @@ namespace SmartSchool.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SmartContext>(
-                context => context.UseSqlite()
+                context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
